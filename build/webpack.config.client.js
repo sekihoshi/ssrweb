@@ -12,13 +12,17 @@ let config = {
         filename: '[name].[hash].js',
         publicPath: '/public/'
     },
+    resolve: {
+        extensions: ['.js','.jsx']
+    },
     module: {
         rules: [{
             test: /\.(js|jsx)$/,
             loader: 'babel-loader',
             exclude: /node_modules/,
             options: {
-                presets: ['@babel/preset-env']
+                presets: ['@babel/preset-env','@babel/preset-react'],
+                plugins: ['react-hot-loader/babel']
             }
         }]
     },
@@ -34,6 +38,7 @@ if(isDev) {
         host: '0.0.0.0',
         port: 3000,
         publicPath: '/public/',
+        hot: true,
         contentBase: path.join(__dirname,'../dist'),
         historyApiFallback: {
             index: '/public/index.html'
