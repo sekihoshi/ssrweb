@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader/root'
 class App extends React.PureComponent {
     render () {
         return <div>
-            this is a react-app
+            this is a reac-tapp
         </div>
     }
 }
