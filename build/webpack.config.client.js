@@ -4,6 +4,7 @@ const HtmlPlugin = require('html-webpack-plugin')
 let isDev = process.env.NODE_ENV == "devlopment"
 
 let config = {
+    mode: 'none',
     entry: {
         app: path.join(__dirname, '../client/index.js'),
     },

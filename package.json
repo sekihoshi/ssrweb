@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:client": "webpack --config build/webpack.config.client.js",
+    "build:server": "webpack --config build/webpack.config.server.js",
     "clear": "rimraf dist",
     "dev": "cross-env NODE_ENV=devlopment webpack-dev-server --config build/webpack.config.client.js"
   },
@@ -33,6 +34,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
