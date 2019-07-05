@@ -23,23 +23,33 @@
   "homepage": "https://github.com/sekihoshi/ssrweb#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-dynamic-import-node": "^2.3.0",
+    "babel-plugin-import": "^1.12.0",
     "cross-env": "^5.2.0",
+    "css-loader": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "isomorphic-style-loader": "^5.1.0",
     "react-hot-loader": "^4.12.0",
     "rimraf": "^2.6.3",
+    "style-loader": "^0.23.1",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "antd": "^3.20.0",
     "axios": "^0.19.0",
+    "css-modules-require-hook": "^4.2.3",
     "express": "^4.17.1",
     "http-proxy-middleware": "^0.19.1",
     "memory-fs": "^0.4.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "style-loader": "^0.23.1"
   }
 }

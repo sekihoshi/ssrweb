@@ -1,0 +1,10 @@
+:local(.headerMenu) {
+    border-bottom: 1px solid #e8e8e8;
+}
+
+/* 让Header组件居中的css写法 */
+:local(.headerMenuMenu) {
+    max-width: 960px;
+    margin: 0 auto;
+    border-bottom: none !important;
+}

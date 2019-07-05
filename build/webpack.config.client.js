@@ -14,7 +14,7 @@ let config = {
         publicPath: '/public/'
     },
     resolve: {
-        extensions: ['.js','.jsx']
+        extensions: ['.js', '.jsx']
     },
     module: {
         rules: [{
@@ -22,9 +22,35 @@ let config = {
             loader: 'babel-loader',
             exclude: /node_modules/,
             options: {
-                presets: ['@babel/preset-env','@babel/preset-react'],
-                plugins: ['react-hot-loader/babel']
+                presets: ['@babel/preset-env', '@babel/preset-react'],
+                plugins: [
+                    'react-hot-loader/babel',
+                    '@babel/plugin-proposal-class-properties',
+                    ["import", {
+                        "libraryName": "antd",
+                        "libraryDirectory": "es",
+                        "style": "css"
+                    }]
+                ]
             }
+        }, {
+            test: /\.css$/,
+            exclude: /node_modules/,
+            use: [{
+                    loader: 'style-loader'
+                },
+                {
+                    loader: 'css-loader',
+                    options: {
+                        modules: true,
+                        localsConvention: 'asIs'
+                    }
+                }
+            ]
+        }, {
+            test: /\.css$/,
+            exclude: /client/,
+            loader: ['style-loader','css-loader']
         }]
     },
     plugins: [
@@ -34,13 +60,13 @@ let config = {
     ]
 }
 
-if(isDev) {
+if (isDev) {
     config.devServer = {
         host: '0.0.0.0',
         port: 3000,
         publicPath: '/public/',
         hot: true,
-        contentBase: path.join(__dirname,'../dist'),
+        contentBase: path.join(__dirname, '../dist'),
         historyApiFallback: {
             index: '/public/index.html'
         }
