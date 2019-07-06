@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 let isDev = process.env.NODE_ENV == "devlopment"
 
@@ -56,7 +57,8 @@ let config = {
     plugins: [
         new HtmlPlugin({
             template: path.join(__dirname, '../client/template.html')
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
 
