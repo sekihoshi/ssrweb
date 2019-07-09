@@ -27,7 +27,7 @@ export default class ArticleList extends React.Component {
 render() {
     return(
         <List
-            style={{margin: '0 auto',maxWidth: 960}}
+            style={{margin: '0 auto',maxWidth: 960,backgroundColor:'#fff'}}
             itemLayout="vertical"
             size="large"
             dataSource={listData}

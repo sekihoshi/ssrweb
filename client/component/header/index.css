@@ -1,6 +1,9 @@
 :local(.headerMenu) {
+    position: fixed;
+    top: 0;
     border-bottom: 1px solid #e8e8e8;
     width: 100%;
+    z-index: 1;
 }
 
 /* 让Header组件居中的css写法 */
