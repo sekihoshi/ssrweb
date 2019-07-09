@@ -4,14 +4,37 @@ import Style from './index.css'
 const {Item} = Menu;
 
 class Header extends React.PureComponent {
-    state = {}
+    dom = null
+    state = {
+        needFixed: false,
+    }
 
-    componentDidMount() {}
+    componentDidMount() {
+        const nextDom = this.dom.nextElementSibling;
+        nextDom.style.marginTop = 48 + 'px'
+        window.onscroll = () => {
+            const fixedTop = this.dom.offsetHeight
+            
+            let scrollTop = Math.max(document.body.scrollTop,document.documentElement.scrollTop)
+            if(scrollTop >= fixedTop ) {
+                this.setState({
+                    needFixed: true,
+                })
+                console.log(1)
+                nextDom.style.marginTop = fixedTop + 'px'
+            }else if(scrollTop < fixedTop) {
+                this.setState({
+                    needFixed: false,
+                })
+                nextDom.style.marginTop = 0;
+            }
+        }
+    }
 
     render() {
         const IconFont = Icon.createFromIconfontCN({scriptUrl: '//at.alicdn.com/t/font_1278300_5oft1on18ok.js'});
         return <React.Fragment>
-            <div className={Style.headerMenu}>
+            <div className={Style.headerMenu + ` ${this.state.needFixed ? Style.fixed: ''}`} ref={(dom)=>{this.dom = dom}}>
            
                 <Menu mode="horizontal" className={Style.headerMenuMenu}>
                     <Item>

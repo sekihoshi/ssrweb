@@ -2,7 +2,7 @@ import React from 'react'
 import { List, Icon, Avatar} from 'antd'
 
 const listData = [];
-for (let i = 0; i < 23; i++) {
+for (let i = 0; i < 5; i++) {
   listData.push({
     href: 'http://ant.design',
     title: `ant design part ${i}`,
@@ -27,14 +27,9 @@ export default class ArticleList extends React.Component {
 render() {
     return(
         <List
+            style={{margin: '0 auto',maxWidth: 960}}
             itemLayout="vertical"
             size="large"
-            pagination={{
-            onChange: page => {
-                console.log(page);
-            },
-            pageSize: 3,
-            }}
             dataSource={listData}
             footer={
             <div>
