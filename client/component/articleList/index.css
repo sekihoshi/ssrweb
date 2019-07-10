@@ -1,0 +1,12 @@
+.articleList {
+    padding-top: 48px;
+    max-width: 960px;
+    min-height: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+:global(.ant-list-item) {
+    padding-left: 20px;
+    padding-right: 10px;
+    cursor: pointer;
+}

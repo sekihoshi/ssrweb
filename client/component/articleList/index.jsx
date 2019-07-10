@@ -1,8 +1,9 @@
 import React from 'react'
 import { List, Avatar, Button, Skeleton, Icon} from 'antd';
 import axios from 'axios';
+import style from './index.css'
 
-const count = 5;
+const count = 10;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
 export default class extends React.Component {
@@ -75,7 +76,7 @@ export default class extends React.Component {
 
     return (
       <List
-        style={{paddingTop: 48,maxWidth: 960,margin: '0 auto'}}
+        className={style.articleList}
         loading={initLoading}
         itemLayout="vertical"
         loadMore={loadMore}
@@ -84,13 +85,13 @@ export default class extends React.Component {
           return(
           <List.Item 
             actions={[
-              <IconText type="like-o" text="0" />,
+              <span>评论</span>,
               <IconText type="message" text="0" />,
             ]}
           >
             <Skeleton avatar title={true} loading={item.loading} active>
               <List.Item.Meta
-                title={<a href="https://ant.design">{item.name.last}</a>}
+                title={<a href="https://ant.design">{'this is a Title'}</a>}
                 description="Ant Design, a design language for background applications, is refined by Ant UED Team"
               />
             </Skeleton>

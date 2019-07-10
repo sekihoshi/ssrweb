@@ -4,7 +4,7 @@ import Header from './component/header'
 import ArticleList from './component/articleList';
 class App extends React.PureComponent {
     render () {
-        return <div>
+        return <div style={{backgroundColor:'#f4f5f5'}}>
             <Header />
             <ArticleList />
         </div>
