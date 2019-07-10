@@ -1,67 +1,102 @@
 import React from 'react'
-import { List, Icon, Avatar} from 'antd'
+import { List, Avatar, Button, Skeleton, Icon} from 'antd';
+import axios from 'axios';
 
-const listData = [];
-for (let i = 0; i < 5; i++) {
-  listData.push({
-    href: 'http://ant.design',
-    title: `ant design part ${i}`,
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    description:
-      'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-    content:
-      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-  });
-}
+const count = 5;
+const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
-const IconText = ({ type, text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
+export default class extends React.Component {
+  state = {
+    initLoading: true,
+    loading: false,
+    data: [],
+    list: [],
+  };
 
-export default class ArticleList extends React.Component {
-   
+  componentDidMount() {
+    this.getData(res => {
+      this.setState({
+        initLoading: false,
+        data: res.data.results,
+        list: res.data.results,
+      });
+    });
+  }
 
-render() {
-    return(
-        <List
-            style={{margin: '0 auto',maxWidth: 960,backgroundColor:'#fff'}}
-            itemLayout="vertical"
-            size="large"
-            dataSource={listData}
-            footer={
-            <div>
-                <b>ant design</b> footer part
-            </div>
-            }
-            renderItem={item => (
-            <List.Item
-                key={item.title}
-                actions={[
-                <IconText type="star-o" text="156" />,
-                <IconText type="like-o" text="156" />,
-                <IconText type="message" text="2" />,
-                ]}
-                extra={
-                <img
-                    width={272}
-                    alt="logo"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                />
-                }
-            >
-            <List.Item.Meta
-                avatar={<Avatar src={item.avatar} />}
-                title={<a href={item.href}>{item.title}</a>}
-                description={item.description}
-            />
-                {item.content}
-            </List.Item>
-            )} 
-        />
-    )
-}
-  
+  getData = callback => {
+    axios.get(fakeDataUrl)
+    .then(res => {
+      callback(res)
+    })
+    .catch(err => {console.log(arr)})
+  };
+
+  onLoadMore = () => {
+    this.setState({
+      loading: true,
+      list: this.state.data.concat([...new Array(count)].map(() => ({ loading: true, name: {} }))),
+    });
+    this.getData(res => {
+      const data = this.state.data.concat(res.data.results);
+      this.setState(
+        {
+          data,
+          list: data,
+          loading: false,
+        },
+        () => {
+          window.dispatchEvent(new Event('resize'));
+        },
+      );
+    });
+  };
+
+  render() {
+    const IconText = ({ type, text }) => (
+      <span>
+        <Icon type={type} style={{ marginRight: 8 }} />
+        {text}
+      </span>
+    );
+    const { initLoading, loading, list } = this.state;
+    const loadMore =
+      !initLoading && !loading ? (
+        <div
+          style={{
+            textAlign: 'center',
+            marginTop: 12,
+            height: 32,
+            lineHeight: '32px',
+          }}
+        >
+          <Button onClick={this.onLoadMore}>加载更多</Button>
+        </div>
+      ) : null;
+
+    return (
+      <List
+        style={{paddingTop: 48,maxWidth: 960,margin: '0 auto'}}
+        loading={initLoading}
+        itemLayout="vertical"
+        loadMore={loadMore}
+        dataSource={list}
+        renderItem={item => {
+          return(
+          <List.Item 
+            actions={[
+              <IconText type="like-o" text="0" />,
+              <IconText type="message" text="0" />,
+            ]}
+          >
+            <Skeleton avatar title={true} loading={item.loading} active>
+              <List.Item.Meta
+                title={<a href="https://ant.design">{item.name.last}</a>}
+                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+              />
+            </Skeleton>
+          </List.Item>
+        )}}
+      />
+    );
+  }
 }
