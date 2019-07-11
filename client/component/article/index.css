@@ -1,0 +1,9 @@
+.article {
+    margin: 0 auto;
+    padding: 10px;
+    padding-top: 58px;
+    max-width: 960px;
+    min-height: calc(100% - 68px);
+    background-color: #fff;
+    box-sizing: content-box;
+}
