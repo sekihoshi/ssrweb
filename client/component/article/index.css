@@ -1,48 +1,9 @@
-
 .article {
-    max-width: 960px;
     margin: 0 auto;
-    padding: 10px 10px 10px 10px;
-    box-sizing: border-box;
-    border-bottom: 1px solid rgba(178,186,194,.15)
-}
-.articleTop {
-   width: 100%;
-   height: 20px;
-}
-.articleTop span{
-    font-size: 12px;
-    color: #b2bac2;
-}
-.articleTop span::after{
-    content: "·";
-    margin: 0 5px;
-    color: #b2bac2;
-}
-.articleMiddle {
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    font-size: 16px;
-    font-weight: 600;
-    color:#2e3135
-}
-.articleBottom {
-    width: 100%;
-    height: 20px;
-}
-.articleBottomTooltip {
-    display: inline-block;
-    width: 50px;
-    padding-left: 5px;
-    height: 20px;
-    line-height: 20px;
-    color: #b2bac2;
-    border-radius: 1px;
-    border: 1px solid #edeeef;
-    
-}
-.articleBottomTooltipEye {
-    display: inline-block;
-    margin-left: 5px;
+    padding: 10px;
+    padding-top: 58px;
+    max-width: 960px;
+    min-height: calc(100% - 68px);
+    background-color: #fff;
+    box-sizing: content-box;
 }

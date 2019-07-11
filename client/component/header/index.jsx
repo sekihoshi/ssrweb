@@ -9,27 +9,6 @@ class Header extends React.PureComponent {
         needFixed: false,
     }
 
-    componentDidMount() {
-        const nextDom = this.dom.nextElementSibling;
-        nextDom.style.paddingTop = 48 + 'px'
-        // window.onscroll = () => {
-        //     const fixedTop = this.dom.offsetHeight
-            
-        //     let scrollTop = Math.max(document.body.scrollTop,document.documentElement.scrollTop)
-        //     if(scrollTop >= fixedTop ) {
-        //         this.setState({
-        //             needFixed: true,
-        //         })
-        //         console.log(1)
-        //         nextDom.style.marginTop = fixedTop + 'px'
-        //     }else if(scrollTop < fixedTop) {
-        //         this.setState({
-        //             needFixed: false,
-        //         })
-        //         nextDom.style.marginTop = 0;
-        //     }
-        // }
-    }
 
     render() {
         const IconFont = Icon.createFromIconfontCN({scriptUrl: '//at.alicdn.com/t/font_1278300_5oft1on18ok.js'});
